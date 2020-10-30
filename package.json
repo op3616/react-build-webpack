@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve",
-    "build": "yarn clean && webpack",
+    "start": "cross-env NODE_ENV=development webpack serve",
+    "build": "yarn clean && cross-env NODE_ENV=production webpack",
     "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,16 +17,24 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
     "css-loader": "^5.0.0",
     "file-loader": "^6.1.1",
     "html-webpack-plugin": "^4.5.0",
     "less-loader": "^7.0.2",
+    "mini-css-extract-plugin": "^1.2.1",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
     "rimraf": "^3.0.2",
     "sass-loader": "^10.0.4",
+    "script-ext-html-webpack-plugin": "^2.1.5",
     "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.0.3",
     "webpack": "^5.2.0",
     "webpack-cli": "^4.1.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.2.0"
   },
   "dependencies": {
     "react": "^17.0.1",
