@@ -1,42 +1,45 @@
-const webpack = require('webpack');
-const path = require('path');
-const paths = require('./paths');
+const webpack = require("webpack");
+const path = require("path");
+const paths = require("./paths");
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   output: {
-    filename: '[name].js',
+    filename: "[name].js",
     path: paths.outputPath,
-    chunkFilename: '[name].js',
+    chunkFilename: "[name].js",
   },
   module: {
     rules: [
       {
         test: /\.(css|scss)$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               sourceMap: true,
               modules: {
-                mode: 'local',
-                localIdentName: '[local]__[hash:base64:5]',
-                exportLocalsConvention: 'camelCase',
+                mode: "local",
+                localIdentName: "[local]__[hash:base64:5]",
+                exportLocalsConvention: "camelCase",
               },
             },
           },
-          'sass-loader',
+          "sass-loader",
         ],
       },
     ],
   },
   devServer: {
     contentBase: paths.outputPath,
+    hot: true,
     port: 3000,
     open: true,
     compress: true,
-    hot: true,
+    inline: true,
+    historyApiFallback: true,
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
+  devtool: "inline-source-map",
 };
